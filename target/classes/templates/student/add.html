@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head lang="en" th:replace="common/head :: head"></head>
+<body>
+
+<body style="background-color:#d2dae2">
+	<div id="content">	
+		<nav lang="en" th:replace="common/header :: header"></nav>
+		<div class="container my-3">
+			<nav aria-label="breadcrumb">
+			  <ol class="breadcrumb">
+			    <li class="breadcrumb-item"><a th:href="@{/student}"><b>Student</b></a></li>
+			    <li class="breadcrumb-item active" aria-current="page">Add</li>
+			  </ol>
+			</nav>
+			<div class="container">
+			  <form th:action="@{/student/save}" th:object="${student}" method="post" class="need-validated">
+			  	<input type="hidden" th:field="*{id}">
+			    <div class="form-group">
+			      <label for="name"><i><b>Index No:</b></i></label>
+			      <input type="text" class="form-control" id="index_no" placeholder="Enter Index No" th:field="*{index_no}" required>
+			    </div>
+			    <div class="form-group">
+			      <label for="batch"><i><b>Name:</b></i></label>
+			      <input type="text" class="form-control" id="name" placeholder="Enter Name" th:field="*{name}" required>
+			    </div>
+			    <div class="form-group">
+			      <label for="batch"><i><b>Batch:</b></i></label>
+			      <select class="form-control" th:field="*{batch}" required>
+					<option value="">Select a Batch...</option>
+					<option value="APHDSE20.2">APHDSE20.2</option>
+					<option value="KUHDSE20.2">KUHDSE20.2</option>
+					<option value="COMHDCSD20.2">COMHDCSD20.2</option>	
+				  </select>
+			    </div>
+			    <div class="form-group">
+			      <label for="module"><i><b>Module:</b></i></label>
+			     <select class="form-control" th:field="*{module}" required>
+					<option value="">Select a Module...</option>
+					<option value="EAD">Embedded Application Development</option>
+					<option value="PDSA">Programming Data Structures and Algorithms</option>
+					<option value="RAD">Robotic Application Development</option>
+					<option value="ADMS">Advanced Database Management Systems</option>	
+					<option value="MAD">Mobile Application Development </option>		
+				  </select>
+			    </div>
+			    <div class="form-group">
+			      <label for="result"><i><b>Results:</b></i></label>
+			     <select class="form-control" th:field="*{result}" required>
+					<option value="">Select Result...</option>
+					<option value="A">A</option>
+					<option value="B">B</option>
+					<option value="C">C</option>
+					<option value="D">D</option>	
+					<option value="F">F</option>		
+				  </select>
+			    </div>
+			   
+			    <button type="submit" class="btn btn-primary">Submit</button>
+			  </form>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$('#studentMenuItem').addClass('active');
+	</script>
+	<footer lang="en" th:replace="common/footer :: footer"></footer>
+
+</body>
+</html>
